@@ -163,6 +163,7 @@
     <ClCompile Include="Hello_World2.c" />
     <ClCompile Include="LineCounting.c" />
     <ClCompile Include="SymbolicContants.c" />
+    <ClCompile Include="Word_Counting.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
