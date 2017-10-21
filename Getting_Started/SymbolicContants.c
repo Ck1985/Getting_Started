@@ -5,7 +5,7 @@
 #define STEP 20
 
 /*Print Fahrenheit - Celsius Table */
-main() {
+mainSymbolConstant() {
 	int fah;
 
 	for (fah = LOWER; fah <= UPPER; fah = fah + STEP) {

@@ -140,18 +140,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CharacterCounting.c" />
+    <ClCompile Include="CharacterCounting2.c" />
     <ClCompile Include="ConvertTemp.c" />
     <ClCompile Include="ConvertTempUseFor.c" />
+    <ClCompile Include="Example1_10.c" />
     <ClCompile Include="Exercise1_1.c" />
     <ClCompile Include="Exercise1_2.c" />
     <ClCompile Include="Exercise1_3.c" />
     <ClCompile Include="Exercise1_4.c" />
     <ClCompile Include="Exercise1_5.c" />
+    <ClCompile Include="Exercise1_6.c" />
+    <ClCompile Include="Exercise1_7.c" />
+    <ClCompile Include="Exercise1_8.c" />
+    <ClCompile Include="Exercise1_9.c" />
     <ClCompile Include="Fahrenheit_Celsius_Table.c" />
+    <ClCompile Include="FileCopyingVer1.c" />
+    <ClCompile Include="FileCopyingVer2.c" />
     <ClCompile Include="Hello_World.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="Hello_World2.c" />
+    <ClCompile Include="LineCounting.c" />
     <ClCompile Include="SymbolicContants.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -48,5 +48,35 @@
     <ClCompile Include="SymbolicContants.c">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="FileCopyingVer1.c">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FileCopyingVer2.c">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Exercise1_6.c">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Exercise1_7.c">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterCounting.c">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterCounting2.c">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LineCounting.c">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Exercise1_8.c">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Exercise1_9.c">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Example1_10.c">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
