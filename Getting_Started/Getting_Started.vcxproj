@@ -144,6 +144,7 @@
     <ClCompile Include="CharacterCounting2.c" />
     <ClCompile Include="ConvertTemp.c" />
     <ClCompile Include="ConvertTempUseFor.c" />
+    <ClCompile Include="Eercise1_12.c" />
     <ClCompile Include="Example1_10.c" />
     <ClCompile Include="Exercise1_1.c" />
     <ClCompile Include="Exercise1_2.c" />

@@ -81,5 +81,8 @@
     <ClCompile Include="Word_Counting.c">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="Eercise1_12.c">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
