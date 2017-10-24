@@ -3,7 +3,7 @@
 #define IN 1
 #define OUT 0
 
-main() {
+main1_12() {
 	int c, nc, nl, nw, nt, ns, state;
 
 	nc = nl = nw = nt = ns = 0;

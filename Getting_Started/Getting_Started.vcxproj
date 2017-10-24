@@ -140,6 +140,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Arrays.c" />
     <ClCompile Include="CharacterCounting.c" />
     <ClCompile Include="CharacterCounting2.c" />
     <ClCompile Include="ConvertTemp.c" />
@@ -147,6 +148,7 @@
     <ClCompile Include="Eercise1_12.c" />
     <ClCompile Include="Example1_10.c" />
     <ClCompile Include="Exercise1_1.c" />
+    <ClCompile Include="Exercise1_13.c" />
     <ClCompile Include="Exercise1_2.c" />
     <ClCompile Include="Exercise1_3.c" />
     <ClCompile Include="Exercise1_4.c" />
