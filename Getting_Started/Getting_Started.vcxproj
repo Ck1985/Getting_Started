@@ -149,6 +149,7 @@
     <ClCompile Include="Example1_10.c" />
     <ClCompile Include="Exercise1_1.c" />
     <ClCompile Include="Exercise1_13.c" />
+    <ClCompile Include="Exercise1_13_Ver2.c" />
     <ClCompile Include="Exercise1_2.c" />
     <ClCompile Include="Exercise1_3.c" />
     <ClCompile Include="Exercise1_4.c" />

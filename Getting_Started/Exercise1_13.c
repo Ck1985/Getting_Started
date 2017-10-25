@@ -6,7 +6,7 @@
 #define IN 1
 #define OUT 0
 
-main() {
+mainVer1() {
 	int c, state, nw, lenWord;
 	int lenArray[100];
 
