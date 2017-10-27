@@ -7,13 +7,9 @@
 #define IN 1
 
 main() {
-	printf("Horizontal Histogram:\n");
-	printf("\n");
-	printf(" Length  |  Graphic\n");
-
 	int c, state, nw, lenWord, index;
 	int lenArray[16];
-	int lenFactArray[100];
+	int lenFactArray[16];
 
 	state = OUT;
 	nw = lenWord = index = 0;
@@ -26,23 +22,17 @@ main() {
 		lenArray[i] = i + 1;
 	}
 
+	/*for (int i = 0; i < 16; ++i) {
+		lenFactArray[i] = 0;
+	}*/
+
+	printf("Please input asome character, then press Ctr + Z\n");
+
 	while ((c = getchar()) != EOF) {
 		if ((c == ' ') || (c == '\t') || (c == '\n')) {
 			state = OUT;
 			lenFactArray[index] = lenWord;
 			index++;
-			/*for (int i = 0; i < 16; ++i) {
-				if ((i == 15) && (lenWord == lenArray[i])) {
-					printf("%6c", '>');
-					printf("%d |%c\n", lenArray[i], '+');
-					break;
-				}
-				if (lenWord == lenArray[i]) {
-					printf("%8d |%c\n", lenArray[i], '+');
-					break;
-				}
-			}*/
-
 			lenWord = 0;
 		}
 		else if (state == OUT) {
@@ -54,20 +44,37 @@ main() {
 		}
 	}
 
-	/*for (int i = 0; i < 16; i++) {
+	printf("Horizontal Histogram:\n");
+	printf("\n");
+	printf("  Length | Graphic\n");
+
+	for (int i = 1; i < 16; i++) {
 		if (i == 15) {
-			printf("%6c", '>');
-			printf("%d |\n", lenArray[i]);
+			printf("%6c%d | ", '>', i);
+			for (int j = 0; j < 16; j++) {
+				if (i <= lenFactArray[j]) {
+					printf("%c ", '+');
+				}
+			}
+			printf("\n");
 			break;
 		}
-		printf("%8d |\n", lenArray[i]);
-	}*/
+		else {
+			printf("%8d | ", i);
+		}
+		for (int j = 0; j < 16; j++) {
+			if (i == lenFactArray[j]) {
+				printf("%c ", '+');
+			}
+		}
+		printf("\n");
+	}
 }
 
 /**
 * Author: Jeremy Yu <ccpalettes@gmail.com>
 *
-* Solution for Exercise 1-13, Chapter1.
+* Solution for Exercise 1-15, Chapter1.
 */
 
 /*#include <stdio.h>
