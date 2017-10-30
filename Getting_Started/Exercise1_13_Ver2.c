@@ -1,30 +1,22 @@
 #include <stdio.h>
+#include <stdbool.h>
 
 /* Histogram of length Words 
-   Bar Vertical */
+   Bar Vertical and Bar Horizonal */
 
 #define OUT 0
 #define IN 1
 
 main() {
 	int c, state, nw, lenWord, index;
-	int lenArray[16];
 	int lenFactArray[16];
 
 	state = OUT;
 	nw = lenWord = index = 0;
 
 	for (int i = 0; i < 16; ++i) {
-		if (i == 15) {
-			lenArray[i] = i;
-			break;
-		}
-		lenArray[i] = i + 1;
-	}
-
-	/*for (int i = 0; i < 16; ++i) {
 		lenFactArray[i] = 0;
-	}*/
+	}
 
 	printf("Please input asome character, then press Ctr + Z\n");
 
@@ -43,15 +35,18 @@ main() {
 			++lenWord;
 		}
 	}
-
+	for (int i = 0; i < 16; ++i) {
+		printf("%d ", lenFactArray[i]);
+	}
+	printf("\n");
 	printf("Horizontal Histogram:\n");
 	printf("\n");
 	printf("  Length | Graphic\n");
 
-	for (int i = 1; i < 16; i++) {
-		if (i == 15) {
+	for (int i = 1; i < 17; i++) {          
+		if (i == 16) {
 			printf("%6c%d | ", '>', i);
-			for (int j = 0; j < 16; j++) {
+			for (int j = 0; j < 16; j++) {  
 				if (i <= lenFactArray[j]) {
 					printf("%c ", '+');
 				}
@@ -69,94 +64,65 @@ main() {
 		}
 		printf("\n");
 	}
-}
 
-/**
-* Author: Jeremy Yu <ccpalettes@gmail.com>
-*
-* Solution for Exercise 1-15, Chapter1.
-*/
+	printf("\n");
+	printf("Vertical Histogram:\n");
 
-/*#include <stdio.h>
+	int verticalArray[16];
 
-#define MAX_LENGTH 15
-#define IN_WORD 1
-#define OUT_WORD 0
-
-int main(void)
-{
-	int c, word_in_out;
-	int word_length[MAX_LENGTH + 1];
-	int l;
-	int i, j;
-	unsigned int max_count;
-
-	for (i = 0; i <= MAX_LENGTH; ++i)
-		word_length[i] = 0;
-
-	word_in_out = OUT_WORD;
-	printf("Input some characters, then press Ctrl+D.\n");
-	while (1) {
-		c = getchar();
-		if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) {
-			if (word_in_out == OUT_WORD) {
-				l = 0;
-				word_in_out = IN_WORD;
-			}
-			++l;
-		}
-		else {
-			if (word_in_out == IN_WORD) {
-				if (l <= MAX_LENGTH)
-					++word_length[l - 1];
-				else
-					++word_length[MAX_LENGTH];
-				word_in_out = OUT_WORD;
-			}
-			if (c == EOF)
-				break;
-		}
+	for (int i = 0; i < 16; i++) {
+		verticalArray[i] = 0;
 	}
 
-	printf("\nHorizontal histogram:\n\n");
-	printf(" length | graph\n");
-	for (i = 0; i <= MAX_LENGTH; ++i) {
-		if (i != MAX_LENGTH)
-			printf("     %2d | ", i + 1);
-		else
-			printf("    >%2d | ", MAX_LENGTH);
-		for (j = 0; j < word_length[i]; ++j)
-			putchar('+');
-		putchar('\n');
+	for (int i = 0; i < 16; i++) {
+		printf("%d ", verticalArray[i]);
 	}
 
-	printf("\nVertical histogram:\n\n");
-	max_count = 0;
-	for (i = 0; i <= MAX_LENGTH; ++i)
-		if (word_length[i] > max_count)
-			max_count = word_length[i];
+	printf("\n");
 
-	for (i = 0; i < max_count; ++i) {
-		printf("  %2u | ", max_count - i);
-		for (j = 0; j <= MAX_LENGTH; ++j)
-			if (word_length[j] >= max_count - i)
-				printf("  +");
-			else
-				printf("   ");
+	for (int i = 1; i < 16; i++) {
+		int count = 0;
+		for (int j = 0; j < 16; j++) {
+			if (i == lenFactArray[j]) {
+				count++;
+			}
+		}
+		verticalArray[i] = count;
+	}
+
+	for (int i = 0; i < 16; i++) {
+		printf("%d ", verticalArray[i]);
+	}
+
+	printf("\n");
+
+	for (int i = 16; i > 0; --i) {
+		int head, tail;
+		head = tail = -1;
+		for (int j = 0; j < 16; ++j) {
+			if (i <= verticalArray[j]) {
+				tail = j;				
+				if (head == -1) {
+					for (int k = head; k < tail - 1; ++k) {
+						printf("  ");
+					}
+					printf("+ ");
+				}
+				else if (head == tail - 1) {
+					printf("+ ");
+				}
+				else {
+					for (int k = head; k < tail - 1; ++k) {
+						printf("  ");
+					}
+					printf("+ ");
+				}
+				head = tail;
+			} 
+		}
 		printf("\n");
 	}
 
-	printf(" ------");
-	for (i = 0; i <= MAX_LENGTH; ++i)
-		printf("---");
-	printf("--\n");
-
-	printf("       ");
-	for (i = 0; i < MAX_LENGTH;)
-		printf(" %2u", ++i);
-	printf(" >%2u", MAX_LENGTH);
 	printf("\n");
-
-	return 0;
-}*/
+}
 
