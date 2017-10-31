@@ -18,7 +18,7 @@ main() {
 		lenFactArray[i] = 0;
 	}
 
-	printf("Please input asome character, then press Ctr + Z\n");
+	printf("Please input some character, then press Ctr + Z\n");
 
 	while ((c = getchar()) != EOF) {
 		if ((c == ' ') || (c == '\t') || (c == '\n')) {
@@ -39,13 +39,15 @@ main() {
 		printf("%d ", lenFactArray[i]);
 	}
 	printf("\n");
+
 	printf("Horizontal Histogram:\n");
+
 	printf("\n");
 	printf("  Length | Graphic\n");
 
 	for (int i = 1; i < 17; i++) {          
 		if (i == 16) {
-			printf("%6c%d | ", '>', i);
+			printf("%6c%d | ", '>', 15);
 			for (int j = 0; j < 16; j++) {  
 				if (i <= lenFactArray[j]) {
 					printf("%c ", '+');
@@ -70,14 +72,6 @@ main() {
 
 	int verticalArray[16];
 
-	for (int i = 0; i < 16; i++) {
-		verticalArray[i] = 0;
-	}
-
-	for (int i = 0; i < 16; i++) {
-		printf("%d ", verticalArray[i]);
-	}
-
 	printf("\n");
 
 	for (int i = 1; i < 16; i++) {
@@ -90,17 +84,17 @@ main() {
 		verticalArray[i] = count;
 	}
 
-	for (int i = 0; i < 16; i++) {
-		printf("%d ", verticalArray[i]);
-	}
-
-	printf("\n");
-
 	for (int i = 16; i > 0; --i) {
-		int head, tail;
+		int head, tail, count;
 		head = tail = -1;
+		count = 0;
+		bool newLine = false;
 		for (int j = 0; j < 16; ++j) {
 			if (i <= verticalArray[j]) {
+				if (count == 0) {
+					printf("%d |", i);
+				}
+				count++;
 				tail = j;				
 				if (head == -1) {
 					for (int k = head; k < tail - 1; ++k) {
@@ -118,9 +112,22 @@ main() {
 					printf("+ ");
 				}
 				head = tail;
+				newLine = true;
 			} 
 		}
-		printf("\n");
+		if (newLine) {
+			printf("\n");
+		}
+	}
+	printf("--------------------------------------------\n");
+	printf("     ");
+	for (int i = 1; i < 17; i++) {
+		if (i == 16) {
+			printf("%c%d", '>', 15);
+		}
+		else {
+			printf("%d ", i);
+		}
 	}
 
 	printf("\n");
