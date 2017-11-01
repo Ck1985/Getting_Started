@@ -162,7 +162,7 @@
     <ClCompile Include="Fahrenheit_Celsius_Table.c" />
     <ClCompile Include="FileCopyingVer1.c" />
     <ClCompile Include="FileCopyingVer2.c" />
-    <ClCompile Include="Function.c" />
+    <ClCompile Include="Functions.c" />
     <ClCompile Include="Hello_World.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
     </ClCompile>

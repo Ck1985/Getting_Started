@@ -2,7 +2,7 @@
 
 /* Print Histogram of Frequency of difference character */
 
-main() {
+main1_14() {
 	printf("Print Histogram of frequence of difference character \n");
 	
 	int valueChar[95];

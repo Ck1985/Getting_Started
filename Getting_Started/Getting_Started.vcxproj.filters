@@ -96,7 +96,7 @@
     <ClCompile Include="Exercise1_14.c">
       <Filter>Resource Files</Filter>
     </ClCompile>
-    <ClCompile Include="Function.c">
+    <ClCompile Include="Functions.c">
       <Filter>Resource Files</Filter>
     </ClCompile>
   </ItemGroup>
