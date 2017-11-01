@@ -7,7 +7,7 @@
 #define OUT 0
 #define IN 1
 
-main() {
+main1_13Ver2() {
 	int c, state, nw, lenWord, index;
 	int lenFactArray[16];
 
@@ -68,6 +68,7 @@ main() {
 	}
 
 	printf("\n");
+
 	printf("Vertical Histogram:\n");
 
 	int verticalArray[16];

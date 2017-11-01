@@ -150,6 +150,7 @@
     <ClCompile Include="Exercise1_1.c" />
     <ClCompile Include="Exercise1_13.c" />
     <ClCompile Include="Exercise1_13_Ver2.c" />
+    <ClCompile Include="Exercise1_14.c" />
     <ClCompile Include="Exercise1_2.c" />
     <ClCompile Include="Exercise1_3.c" />
     <ClCompile Include="Exercise1_4.c" />
@@ -161,6 +162,7 @@
     <ClCompile Include="Fahrenheit_Celsius_Table.c" />
     <ClCompile Include="FileCopyingVer1.c" />
     <ClCompile Include="FileCopyingVer2.c" />
+    <ClCompile Include="Function.c" />
     <ClCompile Include="Hello_World.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
     </ClCompile>
