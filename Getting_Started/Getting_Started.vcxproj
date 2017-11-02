@@ -141,6 +141,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Arrays.c" />
+    <ClCompile Include="CharacterArrays.c" />
     <ClCompile Include="CharacterCounting.c" />
     <ClCompile Include="CharacterCounting2.c" />
     <ClCompile Include="ConvertTemp.c" />
@@ -151,6 +152,7 @@
     <ClCompile Include="Exercise1_13.c" />
     <ClCompile Include="Exercise1_13_Ver2.c" />
     <ClCompile Include="Exercise1_14.c" />
+    <ClCompile Include="Exercise1_15.c" />
     <ClCompile Include="Exercise1_2.c" />
     <ClCompile Include="Exercise1_3.c" />
     <ClCompile Include="Exercise1_4.c" />
@@ -168,6 +170,7 @@
     </ClCompile>
     <ClCompile Include="Hello_World2.c" />
     <ClCompile Include="LineCounting.c" />
+    <ClCompile Include="PowerVer2.c" />
     <ClCompile Include="SymbolicContants.c" />
     <ClCompile Include="Word_Counting.c" />
   </ItemGroup>

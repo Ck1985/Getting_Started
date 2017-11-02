@@ -99,5 +99,14 @@
     <ClCompile Include="Functions.c">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="Exercise1_15.c">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PowerVer2.c">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterArrays.c">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
