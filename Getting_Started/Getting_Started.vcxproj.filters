@@ -108,5 +108,8 @@
     <ClCompile Include="CharacterArrays.c">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="Exercise1_16.c">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
