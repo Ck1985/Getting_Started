@@ -154,6 +154,8 @@
     <ClCompile Include="Exercise1_14.c" />
     <ClCompile Include="Exercise1_15.c" />
     <ClCompile Include="Exercise1_16.c" />
+    <ClCompile Include="Exercise1_17.c" />
+    <ClCompile Include="Exercise1_18.c" />
     <ClCompile Include="Exercise1_2.c" />
     <ClCompile Include="Exercise1_3.c" />
     <ClCompile Include="Exercise1_4.c" />

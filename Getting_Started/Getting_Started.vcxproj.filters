@@ -111,5 +111,11 @@
     <ClCompile Include="Exercise1_16.c">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="Exercise1_17.c">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Exercise1_18.c">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
