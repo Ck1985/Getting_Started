@@ -1,61 +1,60 @@
-//#include <stdio.h>
-
-//#define MAXLINE 1000
-
-/* This program remove trailing blanks and tabs, remove all blank lines */
-
-/*int main() {
-
-}
-
-int processInputLine(char inputLine[], int limit) {
-
-}
-
-void removeBlanksTabs(char inputLine[]) {
-
-}
-
-void removeBlankLines() {
-
-}*/
-
-/**
-* Author: Jeremy Yu <ccpalettes@gmail.com>
-*
-* Solution for Exercise 1-18, Chapter1.
-*/
-
 #include <stdio.h>
 
 #define MAXLINE 1000
 
-int get_line(char line[], int maxline);
+int processInputLine(char inputLine[], int maxline);
+void removeBlanksTabs(char inputLine[], char textProcessed[MAXLINE], int maxline);
 
-int main(void)
-{
-	int len; /* current line length */
-	char line[MAXLINE]; /* current input line */
+/* This program remove trailing blanks and tabs, remove all blank lines */
 
-	while ((len = get_line(line, MAXLINE)) > 0) {
-		if (len == 1 && line[0] == '\n')
-			continue;
-		printf("%s\n", line);
-	}
-
+int main1_18() {
+	char inputLine[MAXLINE];
+	char textProcessed[MAXLINE];
+	processInputLine(inputLine, MAXLINE);
+	removeBlanksTabs(inputLine, textProcessed, MAXLINE);
+	printf("%s\n", textProcessed);
 	return 0;
 }
 
-int get_line(char s[], int lim)
-{
-	int c, i, l;
+int processInputLine(char inputLine[], int limit) {
+	int i, c;
 
-	for (i = 0, l = 0; (c = getchar()) != EOF && c != '\n'; ++i)
-		if (i < lim - 1)
-			s[l++] = c;
-	if (c == '\n' && l < lim - 1)
-		s[l++] = c;
-	s[l] = '\0';
+	for (i = 0; (i < limit - 1) && ((c = getchar()) != EOF) && (c != '\n'); ++i) {
+		inputLine[i] = c;
+	}
+	if (c == '\n') {
+		inputLine[i] = c;
+		++i;
+	}
+	inputLine[i] = '\0';
+	return i;
+}
 
-	return l;
+void removeBlanksTabs(char inputLine[], char textProcessed[MAXLINE], int limit) {
+	int i = 0, j = 0;
+	int count = 0;
+
+	while (inputLine[i] != '\0') {
+		if ((inputLine[i] == ' ') || (inputLine[i] == '\t') || (inputLine[i] == '\b')) {
+			while ((inputLine[i] == ' ') || (inputLine[i] == '\t') || (inputLine[i] == '\b')) {
+				++count;
+				if (count >= 2) {
+					++i;
+				}
+			}
+		}
+		if (count >= 2) {
+			textProcessed[j] = ' ';
+			textProcessed[++j] = inputLine[i];
+			count = 0;
+		}
+		else {
+			textProcessed[j] = inputLine[i];
+			++i;
+			++j;
+		}
+	}
+	if (inputLine[i] == '\0') {
+		textProcessed[j] = '\0';
+	}
 }
