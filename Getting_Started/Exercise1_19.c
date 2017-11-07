@@ -7,7 +7,7 @@ int processLine1_19(char sourceString[], int maxLine);
 
 /* Program reverse characters of string s */
 
-int main() {
+int main1_19() {
 	//char sourceString[17] = { 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','e','\n','\0' };
 	//char string[10] = "abcdefghl";
 	//printf("%s\n", sourceString);
