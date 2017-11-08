@@ -120,5 +120,14 @@
     <ClCompile Include="Exercise1_19.c">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="External_Variables_And_Scope.c">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Exercise1_20.c">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Exercise1_21.c">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

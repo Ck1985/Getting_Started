@@ -158,6 +158,8 @@
     <ClCompile Include="Exercise1_18.c" />
     <ClCompile Include="Exercise1_19.c" />
     <ClCompile Include="Exercise1_2.c" />
+    <ClCompile Include="Exercise1_20.c" />
+    <ClCompile Include="Exercise1_21.c" />
     <ClCompile Include="Exercise1_3.c" />
     <ClCompile Include="Exercise1_4.c" />
     <ClCompile Include="Exercise1_5.c" />
@@ -165,6 +167,7 @@
     <ClCompile Include="Exercise1_7.c" />
     <ClCompile Include="Exercise1_8.c" />
     <ClCompile Include="Exercise1_9.c" />
+    <ClCompile Include="External_Variables_And_Scope.c" />
     <ClCompile Include="Fahrenheit_Celsius_Table.c" />
     <ClCompile Include="FileCopyingVer1.c" />
     <ClCompile Include="FileCopyingVer2.c" />
