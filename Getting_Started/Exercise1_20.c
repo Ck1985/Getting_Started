@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 #define MAXLINE 1000
-#define TABIN	C 8
+#define TABINC 8
 
 int index = 0;
 char inputLine[MAXLINE];
@@ -15,9 +15,10 @@ int getLine1_20(void);
 void processTabs1_20(void);
 
 int main() {
+	extern char inputLine[], locationTab[], editedLine[];
 	getLine1_20();
 	processTabs1_20();
-	printf("%s\n", locationTab);
+	printf("%s\n", editedLine);
 	return 0;
 }
 
@@ -37,7 +38,7 @@ int getLine1_20(void) {
 }
 
 void processTabs1_20(void) {
-	int i, j = 0, length, startTab, stopTab;
+	int i, j = 0, length, startTab, stopTab, flagTab = 1, oppositePart;
 	extern int index;
 	extern char inputLine[], editedLine[], locationTab[];
 
@@ -60,44 +61,31 @@ void processTabs1_20(void) {
 	}
 
 	for (i = 0; i < length; ++i) {
-
-	}
-}
-
-/*#include<stdio.h>
-#define TABINC 8
-
-int main(void)
-{
-	int nb, pos, c;
-
-	nb = 0;
-	pos = 1;
-
-	while ((c = getchar()) != EOF)
-	{
-		if (c == '\t')
-		{
-			nb = TABINC - ((pos - 1) % TABINC);
-
-			while (nb > 0)
-			{
-				putchar('#');
-				++pos;
-				--nb;
+		if ((inputLine[i] == '\t') && (flagTab == 1)) {
+			startTab = i;
+			oppositePart = TABINC - startTab;
+			for (int k = 1; k <= oppositePart; ++k) {
+				editedLine[j] = '#';
+				++j;
 			}
+			stopTab = startTab;
+			flagTab = 0;
 		}
-		else if (c == '\n')
-		{
-			putchar(c);
-			pos = 1;
+		else if (inputLine[i] == '\t') {
+			startTab = i;
+			oppositePart = TABINC - (startTab - stopTab) + 1;
+			for (int k = 1; k <= oppositePart; ++k) {
+				editedLine[j] = '#';
+				++j;
+			}
+			stopTab = startTab;
 		}
-		else
-		{
-			putchar(c);
-			++pos;
+		else {
+			editedLine[j] = inputLine[i];
+			++j;
 		}
 	}
 
-	return 0;
-}*/
+	editedLine[j++] = '\n';
+	editedLine[j] = '\0';
+}
