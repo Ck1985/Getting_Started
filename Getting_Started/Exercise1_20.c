@@ -14,7 +14,7 @@ char editedLine[MAXLINE];
 int getLine1_20(void);
 void processTabs1_20(void);
 
-int main() {
+int main1_20() {
 	int len;
 	extern char inputLine[], locationTab[], editedLine[];
 	while ((len = getLine1_20()) > 0) {
