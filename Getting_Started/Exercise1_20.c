@@ -15,10 +15,12 @@ int getLine1_20(void);
 void processTabs1_20(void);
 
 int main() {
+	int len;
 	extern char inputLine[], locationTab[], editedLine[];
-	getLine1_20();
-	processTabs1_20();
-	printf("%s\n", editedLine);
+	while ((len = getLine1_20()) > 0) {
+		processTabs1_20();
+		printf("%s", editedLine);
+	}
 	return 0;
 }
 
