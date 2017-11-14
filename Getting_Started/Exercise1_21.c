@@ -10,8 +10,9 @@ char processedLine[MAXLINE];
 int getLine1_21(void);
 void processLine1_21(void);
 
-int main() {
-	getLine1_21();
+int main1_21() {
+	int len = 0;
+	len = getLine1_21();
 	processLine1_21();
 	printf("%s\n", processedLine);
 	return 0;
@@ -33,9 +34,8 @@ int getLine1_21(void) {
 }
 
 void processLine1_21(void) {
-	int i, j = 0, headTab = 0, tailTab, countBlanks;
-	int index = 0, firstFlag = 1, fraction = 0, countCharacter = 0, phan_bu = 0;
-	int oldValue = 0;
+	int i, j = 0, index = 0, numChar = 0, numSpace = 0, fraction, oldFraction = 0, tabFraction = 0, flag = 1;
+	int headTab = 0, tailTab, even;
 	extern char inputLine[], processedLine[];
 
 	while (inputLine[index] != '\n') {
@@ -44,27 +44,70 @@ void processLine1_21(void) {
 	length = index;
 
 	for (i = 0; i < length; ++i) {
-		if ((inputLine[i] == ' ') || (inputLine[i] == '\b')) {
-			countBlanks = 1;
-			while ((inputLine[++i] == ' ') || (inputLine[++i] == '\b')) {
-				++countBlanks;
+		if (inputLine[i] == ' ') {
+			numSpace = 1;
+			while (inputLine[++i] == ' ') {
+				++numSpace;
 			}
-			i = i - 2;
-			if (countBlanks >= 8) {
-				/* Most difficult part of program */
-				
-				/*--------------------------------*/
+			if (numSpace >= 8) {
+				i = i - 1;
+				tailTab = i;
+				even = numSpace / 8;
+				numChar = numChar + oldFraction;
+				if (numChar >= 8) {
+					tabFraction = 8;
+					if (flag == 1) {
+						fraction = (tailTab - headTab + 1) - numChar - 8;
+					}
+					else {
+						fraction = (tailTab - headTab ) - numChar - 8;
+					}
+					oldFraction = fraction;
+					headTab = tailTab - fraction;
+					for (int m = 1; m <= even; ++m) {
+						processedLine[j] = '\t';
+						++j;
+					}
+					for (int n = 1; n <= fraction; ++n) {
+						processedLine[j] = ' ';
+						++j;
+					}
+					numChar = 0;
+					flag = 0;
+				}
+				else {
+					tabFraction = 8 - numChar;
+					if (flag == 1) {
+						fraction = (tailTab - headTab + 1) - numChar - (8 - (numChar % 8));
+					}
+					else {
+						fraction = (tailTab - headTab) - numChar - (8 - (numChar % 8));
+					}
+					oldFraction = fraction;
+					headTab = tailTab - fraction;
+					for (int m = 1; m <= even; ++m) {
+						processedLine[j] = '\t';
+						++j;
+					}
+					for (int k = 1; k <= fraction; ++k) {
+						processedLine[j] = ' ';
+						++j;
+					}
+					numChar = 0;
+					flag = 0;
+				}
 			}
 			else {
+				i = i - numSpace;
 				processedLine[j] = inputLine[i];
 				++j;
-				++countCharacter;
+				++numChar;
 			}
 		}
 		else {
 			processedLine[j] = inputLine[i];
 			++j;
-			++countCharacter;
+			++numChar;
 		}
 	}
 }

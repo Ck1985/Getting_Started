@@ -160,6 +160,8 @@
     <ClCompile Include="Exercise1_2.c" />
     <ClCompile Include="Exercise1_20.c" />
     <ClCompile Include="Exercise1_21.c" />
+    <ClCompile Include="Exercise1_21Update.c" />
+    <ClCompile Include="Exercise1_21Ver2.c" />
     <ClCompile Include="Exercise1_3.c" />
     <ClCompile Include="Exercise1_4.c" />
     <ClCompile Include="Exercise1_5.c" />
