@@ -4,33 +4,36 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-#define MAXCOL 40
+#define MAXCOL 100
 #define TABVAL 8
-#define NCOL 20
+#define NCOL 80
 
 char inputLine[MAXCOL];
 char tempLine[MAXCOL];
-char testLine[MAXCOL] = "aaaa bbbbb cccc\ndddddd eee";
+char testLine[MAXCOL] = "aaaa bbbbb\tccc\nccdjfbgfbgfb\tvfdvfdvfdfd\nsdcdscdscdsc";
+char testLine_2[MAXCOL] = "aaaaaaaaaaaaaaaaaaaaaaaaaa aa";
 
-int findLastNonBlankPosition(void);
-void processSpace(void);
-void processNewLine(void);
-void processTab(void);
+int findLastNonBlankPosition(char line[]);
+void processSpace(char result_1[], char result_2[], char line[]);
+void processNewLine(char result_1[], char result_2[], char line[]);
+void processTab(char result_1[], char result_2[], char line[]);
 void foldInputLine(char line[]);
 void processNormalCase(char line[]);
+void processLongLineCase(void);
 bool checkSpaceCase(char line[]);
 bool checkTabCase(char line[]);
 bool checkNewLineCase(char line[]);
+bool checkAtomic(char line[]);
+bool checkLongInputLine(char line[]);
 
 int main() {
-	extern char testLine[];
 	foldInputLine(testLine);
 	return 0;
 }
 
 void foldInputLine(char line[]) {
-	if (checkLongInputLine(inputLine)) {
-		processLongLineCase(inputLine);
+	if (checkLongInputLine(line)) {
+		processLongLineCase(line);
 	}
 	else {
 		processNormalCase(line);
@@ -38,22 +41,81 @@ void foldInputLine(char line[]) {
 }
 
 bool checkLongInputLine(char line[]) {
+	int i = 0, length = 0;
 
+	while (line[i] != '\0') {
+		++length;
+		++i;
+	}
+
+	for (i = 0; i < length; ++i) {
+		if (((line[i] == ' ') || (line[i] == '\b') || (line[i] == '\t') || (line[i] == '\n')) && (i <= NCOL)) {
+			return false;
+		}
+	}
+
+	return true;
 }
 
-void processLongLineCase(char line[]) {
+void processLongLineCase() {
+	printf("I'm so sorry because this is a long input\nSo we won't process it. Please try another input line");
+}
 
+bool checkAtomic(char line[]) {
+	int i = 0, length = 0;
+	char c;
+
+	while (line[i++] != '\0') {
+		++length;
+	}
+	i = 0;
+	while ((c = line[i]) != '\0') {
+		if (((c == ' ') || (c == '\b') || (c == '\t') || (c == '\n')) && (i != 0) && (i != length - 1)) {
+			return false;
+		}
+		++i;
+	}
+	return true;
 }
 
 void processNormalCase(char line[]) {
+	char result_1[MAXCOL];
+	char result_2[MAXCOL];
 	if (checkSpaceCase(line)) {
-		processSpace(line);
+		processSpace(result_1, result_2, line);
+		if (!checkAtomic(result_1)) {
+			processNormalCase(result_1);
+		}
+		if (!checkAtomic(result_2)) {
+			processNormalCase(result_2);
+		}
+		if ((checkAtomic(result_1) == true) && (checkAtomic(result_2) == true)) {
+			return 0;
+		}
 	}
 	else if (checkTabCase(line)) {
-		processTab(line);
+		processTab(result_1, result_2, line);
+		if (!checkAtomic(result_1)) {
+			processNormalCase(result_1);
+		}
+		if (!checkAtomic(result_2)) {
+			processNormalCase(result_2);
+		}
+		if ((checkAtomic(result_1) == true) && (checkAtomic(result_2) == true)) {
+			return 0;
+		}
 	}
 	else if (checkNewLineCase(line)) {
-		processNewLine(line);
+		processNewLine(result_1, result_2, line);
+		if (!checkAtomic(result_1)) {
+			processNormalCase(result_1);
+		}
+		if (!checkAtomic(result_2)) {
+			processNormalCase(result_2);
+		}
+		if ((checkAtomic(result_1) == true) && (checkAtomic(result_2) == true)) {
+			return 0;
+		}
 	}
 }
 
@@ -96,60 +158,51 @@ bool checkNewLineCase(char line[]) {
 	return isNewLineCase;
 }
 
-int findLastNonBlankPosition() {
-	extern char testLine[];
+int findLastNonBlankPosition(char line[]) {
 	int indexLNB = 0, indexB = 0;	  //lnb: last non-blank character before n-th column of input line
 	for (int i = 0; i < NCOL; ++i) {
-		if ((testLine[i] == ' ') || (testLine[i] == '\b') || (testLine[i] == '\t') || (testLine[i] == '\n')) {
+		if ((line[i] == ' ') || (line[i] == '\b') || (line[i] == '\t') || (line[i] == '\n')) {
 			indexB = i;
 		}
 	}
 	for (int j = 0; j < indexB; ++j) {
-		if ((testLine[j] != ' ') && (testLine[j] != '\b') && (testLine[j] != '\t') && (testLine[j] != '\n')) {
+		if ((line[j] != ' ') && (line[j] != '\b') && (line[j] != '\t') && (line[j] != '\n')) {
 			indexLNB = j;
 		}
 	}
 	return indexLNB;
 }
 
-void processSpace() {
-	extern char testLine[];
-	char result_1[MAXCOL];
-	char result_2[MAXCOL];
+void processSpace(char result_1[], char result_2[], char line[]) {
 	int index_1, index_2 = 0;
 
 	int indexLNB = 0, indexSpace = 0;
-	indexLNB = findLastNonBlankPosition(testLine);
+	indexLNB = findLastNonBlankPosition(line);
 	indexSpace = indexLNB + 1;
 	for (index_1 = 0; index_1 < indexSpace; index_1++) {
-		result_1[index_1] = testLine[index_1];
+		result_1[index_1] = line[index_1];
 	}
-	result_1[index_1] = '\n';
-	result_1[++index_1] = '\0';
+	result_1[index_1] = '\0';
 
 	for (int j = indexSpace + 1; j < MAXCOL; j++) {
-		result_2[index_2++] = testLine[j];
+		result_2[index_2++] = line[j];
 	}
-	result_2[index_2] = '\n';
-	result_2[++index_2] = '\0';
+	result_2[index_2] = '\0';
 
 	printf("Result_1: %s\nResult_2: %s\n", result_1, result_2);
 }
 
-void processTab() {
-	extern char tempLine[];
-	char result_1[MAXCOL];
-	char result_2[MAXCOL];
+void processTab(char result_1[], char result_2[], char line[]) {
 	int indexLNB = 0, indexTab = 0;
 	int i, j, t;
 
-	indexLNB = findLastNonBlankPosition(testLine);
+	indexLNB = findLastNonBlankPosition(line);
 	indexTab = indexLNB + 1;
 
 	j = 0;
 	for (int i = 0; i < MAXCOL; i++) {
 		if (i != indexTab) {
-			tempLine[j++] = testLine[i];
+			tempLine[j++] = line[i];
 		}
 		else {
 			for (int k = 1; k <= 8; k++) {
@@ -172,26 +225,21 @@ void processTab() {
 	printf("Result_1: %s\nResult_2: %s\n", result_1, result_2);
 }
 
-void processNewLine() {
-	extern char testLine[];
-	char result_1[MAXCOL];
-	char result_2[MAXCOL];
+void processNewLine(char result_1[], char result_2[], char line[]) {
 	int index_1, index_2 = 0;
 
 	int indexLNB = 0, indexNB = 0;
-	indexLNB = findLastNonBlankPosition(testLine);
+	indexLNB = findLastNonBlankPosition(line);
 	indexNB = indexLNB + 1;
 	for (index_1 = 0; index_1 < indexNB; index_1++) {
-		result_1[index_1] = testLine[index_1];
+		result_1[index_1] = line[index_1];
 	}
-	result_1[index_1] = '\n';
-	result_1[++index_1] = '\0';
+	result_1[index_1] = '\0';
 
 	for (int j = indexNB + 1; j < MAXCOL; j++) {
-		result_2[index_2++] = testLine[j];
+		result_2[index_2++] = line[j];
 	}
-	result_2[index_2] = '\n';
-	result_2[++index_2] = '\0';
+	result_2[index_2] = '\0';
 
 	printf("Result_1: %s\nResult_2: %s\n", result_1, result_2);
 }
