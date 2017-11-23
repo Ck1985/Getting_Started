@@ -26,7 +26,7 @@ bool checkNewLineCase(char line[]);
 bool checkAtomic(char line[]);
 bool checkLongInputLine(char line[]);
 
-int main() {
+int main1_22() {
 	foldInputLine(testLine);
 	return 0;
 }
