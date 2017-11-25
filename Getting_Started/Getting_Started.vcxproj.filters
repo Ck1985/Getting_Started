@@ -138,5 +138,8 @@
     <ClCompile Include="Exercise1_23.c">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="Exercise1_24.c">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
